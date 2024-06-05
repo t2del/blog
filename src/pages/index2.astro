@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Container from '../components/Container.astro';
+import { getCollection, getEntry } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+import Pagination from "../components/Pagination.astro";
+
+// import CustomModal from '../components/ModalButton.astro';
+import { Image } from "astro:assets"
+import { Debug } from 'astro:components';
+
+	// const posts_blog = (await getCollection('blog'))
+	// .filter(post => post.data.status == 'active') // Filter out active posts
+  	// .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()).reverse()
+	// .slice(0, 3); // Limit to the first 3 posts
+
+export async function getStaticPaths({ paginate }) {
+	const allBlogPosts = (await getCollection('blog'))
+  	.sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()).reverse();
+  	
+	// Return a paginated collection of paths for all posts
+  	return paginate(allBlogPosts, { pageSize: 6 });
+}
+
+// If set up correctly, The page prop now has everything that
+// you need to render a single page (see next section).
+const { page } = Astro.props;
+
+
+
+
+---
+<debug>{page}</debug>
+<Layout title="t2del" meta_description="t2del" body_class="home">
+	
+	<section id="blog">
+		<Container className="container-blog">
+			<h2 class="notshow fromleft"> <span class="text-gradient">Blog</span></h2>
+			<!-- <ul role="list" class="link-card-grid">
+				{
+					posts_blog.map((post) => (
+						<li class="notshow fromtop">
+							<a href={`/blog/${post.slug}/`}>
+								<Image src={post.data.heroImage} 
+									width={700} 
+									height={400} 
+									alt={post.data.imgalt}
+									title={post.data.imgalt}
+									loading="eager">									
+								</Image>
+								<h4 class="title">{post.data.title}</h4>
+								<p class="date">
+									<FormattedDate date={post.data.pubDate} />
+								</p>
+							</a>							
+						</li>						
+					))
+				}
+			</ul> -->
+			
+			<ul role="list" class="link-card-grid grid-3">
+				{
+					page.data.map((post) => ( 					
+						<li class="notshow fromtop">
+							<a href={`/blog/${post.slug}/`}>
+								<img  src={post.data.heroImage} alt={post.data.imgalt} title={post.data.imgalt} />
+								<h4 class="title">{post.data.title}</h4>
+								<p class="date">
+									<FormattedDate date={post.data.pubDate} />
+								</p>
+							</a>							
+						</li>
+					))
+				}
+			</ul>
+			<Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+		</Container>			
+	</section>
+
+
+</Layout>
