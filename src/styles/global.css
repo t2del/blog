@@ -52,8 +52,9 @@ span {
 	max-width: var(--container-max-width);
 	padding: var(--container-padding);
 }
-.content__container.blog-container {
-	margin: 30px auto;
+.content__container.container-blog {
+	margin: 0 auto;
+	padding: 0 10px;
 }
 .content__container.container-header {
 	margin: 0 auto;
