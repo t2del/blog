@@ -149,4 +149,7 @@ header.white-bg nav a {
       padding: 5px 5px;
       box-shadow: none;
      } 
+     header nav a {
+      color: #000 !important;
+    }
   }
