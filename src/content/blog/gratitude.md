@@ -1,6 +1,6 @@
 ---
 pubDate: 'Dec 12 2023'
-heroImage: '/blog/blog/blog-placeholder-3.jpg'
+heroImage: '/blog/blog-placeholder-3.jpg'
 imgalt: 'Gratitude'
 title: Gratitude
 author: T2del

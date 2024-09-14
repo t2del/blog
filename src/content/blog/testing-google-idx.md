@@ -1,6 +1,6 @@
 ---
 pubDate: 'Dec 14 2023'
-heroImage: '/blog/blog/blog-placeholder-3.jpg'
+heroImage: '/blog/blog-placeholder-3.jpg'
 imgalt: 'Test Google IDX'
 title: Test Google IDX
 author: T2del
