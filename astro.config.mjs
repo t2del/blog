@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://t2del.github.io/',
+    site: 'https://www.t2del.com/',
     base: '/blog/',
     // output: 'server',
     // adapter: nodejs(),
